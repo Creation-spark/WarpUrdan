@@ -1,0 +1,6 @@
+SDL3-3.4.16/
+build/
+.vscode/
+*.exe
+*.obj
+*.o
