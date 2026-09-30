@@ -9,11 +9,9 @@ add_subdirectory(SDL3-3.4.16)
 
 set(SOURCES 
 main.cpp
-Cpp/WU_Moduls.cpp
-Cpp/wuSystem.cpp
-Cpp/wuCicle.cpp
-Cpp/wuObjects.cpp
-Cpp/wuObjects_Buffer.cpp
+Cpp/WarpUrdan.cpp
+Cpp/wuCycle.cpp
+Cpp/wuSpace.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})

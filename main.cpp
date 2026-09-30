@@ -1,78 +1,51 @@
-// Just ADAPT to convert absurdity at power.
+/*
+Only fire can cause a firestorm.
+But you are a spark.
+You are the smallest one.
+So make them fear you.
+*/
 
 #define SDL_MAIN_HANDLED
-#include "WU_Moduls.h"
+#include "WarpUrdan.h"
+using namespace wu;
 
 int main() {
-    WU_ModulsCreate();
-    WU_ModulsPrepare();
+    WU_CreateModuls();
 
-    m_Objects->Cr_FigureArray(8);
+    space->Set_LayerSize(0, 6);
     
-    m_Objects->Add_Figure(
-        FIGURE_RECT, { 255,160,0,255 },
-        { 100,100 }, { 100,100 }, 0
-    );
-    m_Objects->Add_Figure(
-        FIGURE_RECT, { 255,160,0,255 },
-        { 600,100 }, { 100,100 }, 0
-    );
-    m_Objects->Add_Figure(
-        FIGURE_RECT, { 255,160,0,255 },
-        { 600,600 }, { 100,100 }, 0
-    );
-    m_Objects->Add_Figure(
-        FIGURE_RECT, { 255,160,0,255 },
-        { 100,600 }, { 100,100 }, 0
-    );
+    Figure* fig{ nullptr };
+    fig = space->Get_Figure(0, 0);
+    fig->type = FIGURE_RECTENGLE;
+    fig->pos = { 10,10 };
 
-    m_Objects->Add_Figure(
-        FIGURE_RECT, { 255,160,0,255 },
-        { 350,100 }, { 100,100 }, 0
-    );
-    m_Objects->Add_Figure(
-        FIGURE_RECT, { 255,160,0,255 },
-        { 600,350 }, { 100,100 }, 0
-    );
-    m_Objects->Add_Figure(
-        FIGURE_RECT, { 255,160,0,255 },
-        { 350,600 }, { 100,100 }, 0
-    );
-    m_Objects->Add_Figure(
-        FIGURE_RECT, { 255,160,0,255 },
-        { 100,350 }, { 100,100 }, 0
-    );
-    int anim_frame{ 0 };
-    Figure* figs = m_Objects->G_FigureArray();
-    int step{ 50 };
+    fig = space->Get_Figure(0, 1);
+    fig->type = FIGURE_RECTENGLE;
+    fig->pos = { 10,20 };
 
-    for (;;) {
-        WU_CicleStart({0,0,0,255});
+    fig = space->Get_Figure(0, 2);
+    fig->type = FIGURE_RECTENGLE;
+    fig->pos = { 20,10 };
 
-        if (anim_frame % 5 == 0) {
-            for (int i{ 0 };i < 8;i++) {
-                Figure* fig = &figs[i];
-                if (fig->pos.y == 100 && fig->pos.x < 600) {
-                    fig->pos.x += step;
-                }
-                else if (fig->pos.x == 600 && fig->pos.y < 600) {
-                    fig->pos.y += step;
-                }
-                else if (fig->pos.y == 600 && fig->pos.x > 100) {
-                    fig->pos.x -= step;
-                }
-                else if (fig->pos.x == 100 && fig->pos.y > 100) {
-                    fig->pos.y -= step;
-                }
-            }
-        }
+    // [=]<------------------------------------------------------------->[=]
+    
+    fig = space->Get_Figure(0, 3);
+    fig->type = FIGURE_RECTENGLE;
+    fig->pos = { 90,90 };
 
-        anim_frame++;
-        if (anim_frame == 25) {
-            anim_frame = 0;
-        }
-        WU_CicleEnd();
+    fig = space->Get_Figure(0, 4);
+    fig->type = FIGURE_RECTENGLE;
+    fig->pos = { 80,90 };
+
+    fig = space->Get_Figure(0, 5);
+    fig->type = FIGURE_RECTENGLE;
+    fig->pos = { 90,80 };
+
+    while (cycle->Runing()) {
+        
+        space->Render_Draw_Buffer();
+
     }
-
-    WU_ModulsDelete();
+    WU_DeleteModuls();
+    return 0;
 }
