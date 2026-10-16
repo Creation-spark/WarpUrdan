@@ -4,48 +4,27 @@ But you are a spark.
 You are the smallest one.
 So make them fear you.
 */
-
+// [=]<-------------------------------------------------------------->[=]
 #define SDL_MAIN_HANDLED
 #include "WarpUrdan.h"
-using namespace wu;
-
+// [=]<-------------------------------------------------------------->[=]
 int main() {
-    WU_CreateModuls();
+    WU wu;
+    wu.window.ON("Fine", { 0,0 }, { 200,200 });
+    wu.render.ON(wu.window.G_Window());
 
-    space->Set_LayerSize(0, 6);
-    
-    Figure* fig{ nullptr };
-    fig = space->Get_Figure(0, 0);
-    fig->type = FIGURE_RECTENGLE;
-    fig->pos = { 10,10 };
+    wu.buff.figures.push_back(new Figure{ FIGURE_RECTENGLE,{ 5,5 },{ 10,10 },{ 130,0,255,255 },0 });
 
-    fig = space->Get_Figure(0, 1);
-    fig->type = FIGURE_RECTENGLE;
-    fig->pos = { 10,20 };
+    while (wu.cycle.Is_Runing()) {
+        wu.render.Clear();
 
-    fig = space->Get_Figure(0, 2);
-    fig->type = FIGURE_RECTENGLE;
-    fig->pos = { 20,10 };
+        // ...
 
-    // [=]<------------------------------------------------------------->[=]
-    
-    fig = space->Get_Figure(0, 3);
-    fig->type = FIGURE_RECTENGLE;
-    fig->pos = { 90,90 };
-
-    fig = space->Get_Figure(0, 4);
-    fig->type = FIGURE_RECTENGLE;
-    fig->pos = { 80,90 };
-
-    fig = space->Get_Figure(0, 5);
-    fig->type = FIGURE_RECTENGLE;
-    fig->pos = { 90,80 };
-
-    while (cycle->Runing()) {
-        
-        space->Render_Draw_Buffer();
-
+        wu.render.Present(wu.buff);
     }
-    WU_DeleteModuls();
+
+    delete wu.buff.figures[0];
+    wu.render.OFF();
+    wu.window.OFF();
     return 0;
 }

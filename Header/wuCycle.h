@@ -3,48 +3,41 @@
 #include "SDL3/SDL.h"
 #include "wuType.h"
 
+class wuEvent {
+private:
+    SDL_Event event;
+    wuResult result;
+public:
+    bool Get_NewEvent();
+    wuResult Mous_Events();
+    wuResult Keyboard_Events();
+    wuResult Program_Events();
+    bool Process_Events();
+};
+// [=]<------------------------------------------------------------->[=]
 class wuFrame {
 private:
-    Uint64 start{ 0 };
-    Uint64 end{ 0 };
-    Uint64 cicle{ 0 };
-    Uint64 perFrame{ 40 };
+    int start{ 0 };
+    int end{ 0 };
+    int cicle{ 0 };
+    int expected{ 0 };
 public:
     wuFrame();
 
-    void Set_FPSLimit(int fps);
-
-    void Start();
-    void End();
+    void Set_FPSLimit(int n_limit);
+    void Set_StartTime();
+    void Set_EndTime();
+    void Generate_Deley();
 };
-
-class wuEvent {
-private:
-    SDL_Event* event{nullptr};
-    wuResult result{ WUR_NONE };
-public:
-    wuEvent();
-    ~wuEvent();
-
-    bool NewEvent();
-    wuResult Mous();
-    wuResult Keyboard();
-    wuResult Program();
-    bool Events();
-
-    void S_Event(SDL_Event* Event) { event = Event; }
-};
-
+// [=]<------------------------------------------------------------->[=]
 class wuCycle {
-private:
-    wuFrame frame;
-    wuEvent event;
 public:
-    bool Runing();
+    wuEvent event;
+    wuFrame frame;
 
-    void FPSUpLimit(int fps);
+    // Cycle condition
+    bool Is_Runing();
 };
 
 #endif // WUCYCLE_H
-
-// [#-#-#-#-#-#-#-#-#-#-#-#-#-#-#>{ ... }<#-#-#-#-#-#-#-#-#-#-#-#-#-#-#]
+// [=]<------------------------------------------------------------->[=]

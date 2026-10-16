@@ -10,8 +10,10 @@ add_subdirectory(SDL3-3.4.16)
 set(SOURCES 
 main.cpp
 Cpp/WarpUrdan.cpp
+Cpp/wuWindow.cpp
 Cpp/wuCycle.cpp
-Cpp/wuSpace.cpp
+Cpp/wuRender.cpp
+Cpp/wu2D_Geometry.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
