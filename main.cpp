@@ -10,10 +10,10 @@ So make them fear you.
 // [=]<-------------------------------------------------------------->[=]
 int main() {
     WU wu;
-    wu.window.ON("Fine", { 0,0 }, { 200,200 });
+    wu.window.ON("Fine", { 1920*0.5f,1080*0.5f }, { 400,200 });
     wu.render.ON(wu.window.G_Window());
 
-    wu.buff.figures.push_back(new Figure{ FIGURE_RECTENGLE,{ 5,5 },{ 10,10 },{ 130,0,255,255 },0 });
+    wu.buff.windows.push_back(Window{ { 150,50 },{ 200,100 },4 });
 
     while (wu.cycle.Is_Runing()) {
         wu.render.Clear();
@@ -23,7 +23,6 @@ int main() {
         wu.render.Present(wu.buff);
     }
 
-    delete wu.buff.figures[0];
     wu.render.OFF();
     wu.window.OFF();
     return 0;

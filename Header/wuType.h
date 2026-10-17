@@ -8,15 +8,13 @@ enum wuResult {
     WUR_QUIT
 };
 // [=]<-------------------------------------------------------------->[=]
-struct Int2 {
-    int x{ 0 };
-    int y{ 0 };
-};
-struct UInt2 {
-    uint32_t x{ 0 };
-    uint32_t y{ 0 };
+
+struct Float2 {
+    float x{ 0 };
+    float y{ 0 };
 };
 // [=]<-------------------------------------------------------------->[=]
+
 struct Pixel {
     uint8_t r{ 0 };
     uint8_t g{ 0 };

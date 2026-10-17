@@ -1,7 +1,7 @@
 #ifndef WURENDER_H
 #define WURENDER_H
 #include "SDL3/SDL.h"
-#include "wu2D_Geometry.h"
+#include "wu2D_Graphics.h"
 #include <vector>
 using std::vector;
 
